@@ -60,3 +60,41 @@ export interface VetKpi {
   activeSurgeries: number;
   avgWaitTimeMinutes: number;
 }
+
+export interface RadiologyStudy {
+  id: string;
+  patientId: string;
+  petName: string;
+  species: SpeciesType;
+  modality: "DIGITAL_XRAY" | "ULTRASOUND_DOPPLER" | "CT_SCAN";
+  anatomyRegion: string;
+  radiologistFinding: string;
+  exposureKvp: number;
+  exposureMas: number;
+  status: "CAPTURED" | "RADIOLOGIST_REVIEW" | "FINALIZED";
+  capturedTimestamp: string;
+}
+
+export interface DischargePassport {
+  passportId: string;
+  patientId: string;
+  petName: string;
+  species: SpeciesType;
+  breed: string;
+  ownerName: string;
+  contactPhone: string;
+  dischargeDate: string;
+  attendingVeterinarian: string;
+  veterinaryLicenseNo: string;
+  finalDiagnosis: string;
+  prognosis: "EXCELLENT" | "FAVORABLE" | "GUARDED" | "CRITICAL";
+  prescriptions: {
+    drugName: string;
+    dosage: string;
+    frequency: string;
+    durationDays: number;
+    route: string;
+  }[];
+  homeCareInstructions: string[];
+  followUpDate: string;
+}
